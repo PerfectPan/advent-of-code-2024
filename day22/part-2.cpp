@@ -2,8 +2,10 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <chrono>
 
 int main() {
+    auto start = std::chrono::high_resolution_clock::now();
     std::ifstream fin("input.txt");
     long long num;
     long long ans = 0;
@@ -38,5 +40,8 @@ int main() {
         }
     }
     std::cout << ans << std::endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
     return 0;
 }
